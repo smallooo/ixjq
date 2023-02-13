@@ -17,4 +17,6 @@ struct ixqjApp: App {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
+    
+   
 }
