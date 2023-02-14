@@ -18,6 +18,7 @@ public class MyViewModel: ObservableObject {
     @Published var token: String
     
     private var apiPublisher: AnyPublisher<[String: String], Never>?
+    private var cancellable: AnyCancellable?
         
     init(userName: String) {
         self.token = userName
@@ -78,17 +79,8 @@ public class MyViewModel: ObservableObject {
 
     
     func getPosts()  {
-            
-//        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {
-//            fatalError("Invalid URL")
-//        }
-//
-//        return URLSession.shared.dataTaskPublisher(for: url).map { $0.data }
-//        .decode(type: [Post].self, decoder: JSONDecoder())
-//        .receive(on: RunLoop.main)
-//        .eraseToAnyPublisher()
         
-        //somewhere in viewDidLoad
+
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
 
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -115,17 +107,31 @@ public class MyViewModel: ObservableObject {
             
     }
     
+    let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+    
+    private var posts: [Post] = [] {
+           didSet {
+               print("posts --> \(self.posts.count)")
+           }
+       }
+    
+    func getPostByCombine() {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+
+                cancellable = URLSession.shared.dataTaskPublisher(for: url)
+                .map { $0.data }
+                .decode(type: [Post].self, decoder: JSONDecoder())
+                .replaceError(with: [])
+                .eraseToAnyPublisher()
+                .assign(to: \.posts, on: self)
+    }
+    
     public func login() {
         
-       // let cancellable = getPosts().sink(receiveCompletion: { _ in }, receiveValue: { print($0) })
-        getPosts()
+       
+        getPostByCombine()
         
- //        XQJApiService.fetch(endpoint: .villagers)
-//            .subscribe(on: DispatchQueue.global())
-//            .replaceError(with: [:])
-//            .eraseToAnyPublisher()
-        
-  //      token = apiPublisher?.description.description ?? "283"
+
         
     }
     
