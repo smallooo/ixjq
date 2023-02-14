@@ -16,10 +16,8 @@ struct HomeView: View {
             
             ItemImage(path: "", size: 100)
             
-           
             
             NavigationLink {
-                // destination view to navigation to
                 GreetingView()
             } label: {
                 Image(systemName: "list.dash")
@@ -31,7 +29,6 @@ struct HomeView: View {
 }
 
 func greeting() {
-
         print("Hello, World!")
     
     }

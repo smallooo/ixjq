@@ -15,6 +15,8 @@
 		D162A737299A3D9C00F0CC92 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162A736299A3D9C00F0CC92 /* TabbarView.swift */; };
 		D162A73A299A3EBE00F0CC92 /* UIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162A739299A3EBE00F0CC92 /* UIState.swift */; };
 		D162A743299A4AE500F0CC92 /* backend in Frameworks */ = {isa = PBXBuildFile; productRef = D162A742299A4AE500F0CC92 /* backend */; };
+		D162A746299B278700F0CC92 /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = D162A745299B278700F0CC92 /* UI */; };
+		D162A749299B2AFF00F0CC92 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162A748299B2AFF00F0CC92 /* MyViewModel.swift */; };
 		D17066F62996303C0027CEE5 /* ixqjApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17066F52996303C0027CEE5 /* ixqjApp.swift */; };
 		D17066F82996303C0027CEE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17066F72996303C0027CEE5 /* ContentView.swift */; };
 		D17066FA2996303E0027CEE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17066F92996303E0027CEE5 /* Assets.xcassets */; };
@@ -61,6 +63,7 @@
 		D162A73B299A427500F0CC92 /* backend */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = backend; path = ../../backend; sourceTree = "<group>"; };
 		D162A741299A4ACC00F0CC92 /* backend */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = backend; path = ../backend; sourceTree = "<group>"; };
 		D162A744299B26D200F0CC92 /* UI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UI; path = ../package/UI; sourceTree = "<group>"; };
+		D162A748299B2AFF00F0CC92 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 		D17066F22996303C0027CEE5 /* ixqj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ixqj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17066F52996303C0027CEE5 /* ixqjApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ixqjApp.swift; sourceTree = "<group>"; };
 		D17066F72996303C0027CEE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				471AC8E2AACA504EEF983697 /* Pods_ixqj.framework in Frameworks */,
+				D162A746299B278700F0CC92 /* UI in Frameworks */,
 				D162A743299A4AE500F0CC92 /* backend in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +161,14 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		D162A747299B2AE100F0CC92 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D162A748299B2AFF00F0CC92 /* MyViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
 		D17066E92996303C0027CEE5 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +195,7 @@
 		D17066F42996303C0027CEE5 /* ixqj */ = {
 			isa = PBXGroup;
 			children = (
+				D162A747299B2AE100F0CC92 /* viewModels */,
 				D162A738299A3EA800F0CC92 /* env */,
 				D170672B2996428B0027CEE5 /* Services */,
 				D1706726299636590027CEE5 /* UI */,
@@ -269,6 +282,7 @@
 			name = ixqj;
 			packageProductDependencies = (
 				D162A742299A4AE500F0CC92 /* backend */,
+				D162A745299B278700F0CC92 /* UI */,
 			);
 			productName = ixqj;
 			productReference = D17066F22996303C0027CEE5 /* ixqj.app */;
@@ -457,6 +471,7 @@
 			files = (
 				D170672A2996372F0027CEE5 /* MyView.swift in Sources */,
 				D162A732299A2E1300F0CC92 /* DetailView.swift in Sources */,
+				D162A749299B2AFF00F0CC92 /* MyViewModel.swift in Sources */,
 				D17066FF2996303E0027CEE5 /* Persistence.swift in Sources */,
 				D1706725299634A90027CEE5 /* CustomTabbar.swift in Sources */,
 				D162A734299A2EB500F0CC92 /* GreetingView.swift in Sources */,
@@ -803,6 +818,10 @@
 		D162A742299A4AE500F0CC92 /* backend */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = backend;
+		};
+		D162A745299B278700F0CC92 /* UI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UI;
 		};
 /* End XCSwiftPackageProductDependency section */
 
