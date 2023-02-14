@@ -7,18 +7,33 @@
 
 import Foundation
 import SwiftUI
+import backend
 
 struct HomeView: View {
     var body: some View {
-        Text("Hello HomeView")
-        Button("Greeting", action: greeting)
-    
+        VStack {
+            Text("Hello HomeView")
+            
+            ItemImage(path: "", size: 100)
+            
+           
+            
+            NavigationLink {
+                // destination view to navigation to
+                GreetingView()
+            } label: {
+                Image(systemName: "list.dash")
+                    .foregroundColor(.gray)
+            }
+            
+        }
     }
 }
 
 func greeting() {
 
         print("Hello, World!")
+    
     }
 
 struct HomeView_Previews: PreviewProvider {

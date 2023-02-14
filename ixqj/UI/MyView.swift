@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct MyView: View {
+    @State var isView1Active: Bool = false
+    
     var body: some View {
-        Text("Hello MyView")
+        VStack {
+            Text("Hello MyView")
+            NavigationLink(destination: DetailView(), isActive: $isView1Active) {
+                Text("View 1")
+                    .font(.headline)
+            }
+        }
     }
 }
 
