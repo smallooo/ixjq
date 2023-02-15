@@ -17,8 +17,14 @@ public class MyViewModel: ObservableObject {
     
     @Published var token: String
     
-    private var apiPublisher: AnyPublisher<[String: String], Never>?
+    private var apiPublisher: AnyPublisher< Post, Never>?
     private var cancellable: AnyCancellable?
+    
+    private var apiCancellable: AnyCancellable? {
+        willSet {
+            apiCancellable?.cancel()
+        }
+    }
         
     init(userName: String) {
         self.token = userName
@@ -63,10 +69,10 @@ public class MyViewModel: ObservableObject {
 
     struct Post: Codable {
 
-        let id: Int
-        let title: String
-        let body: String
-        let userId: Int
+        let code: Int
+        let data: String
+        let msg: String
+    
     }
 
     struct Todo: Codable {
@@ -79,7 +85,6 @@ public class MyViewModel: ObservableObject {
 
     
     func getPosts()  {
-        
 
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
 
@@ -97,7 +102,7 @@ public class MyViewModel: ObservableObject {
             do {
                 let decoder = JSONDecoder()
                 let posts = try decoder.decode([Post].self, from: data)
-                print(posts.map { $0.title })
+               // print(posts.map { $0.title })
             }
             catch {
                 print("Error: \(error.localizedDescription)")
@@ -129,7 +134,23 @@ public class MyViewModel: ObservableObject {
     public func login() {
         
        
-        getPostByCombine()
+        //getPostByCombine()
+        
+        apiPublisher =  XQJApiService.fetch(endpoint: .villagers)
+            .subscribe(on: DispatchQueue.global())
+            .replaceError(with: Post(code: 222, data: "error data", msg: "error msg"))
+            .eraseToAnyPublisher()
+        
+        apiCancellable = apiPublisher?
+            .subscribe(on: DispatchQueue.global())
+            .map{ $0}
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] in
+                guard let self = self else { return }
+                print($0)
+                //self.todayBirthdays = $0.filter( { $0.birthday == self.today })
+                //self.isLoading = false
+            })
         
 
         
