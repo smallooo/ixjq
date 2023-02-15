@@ -13,17 +13,21 @@ struct MyView: View {
     @State var isLogin: Bool = false
     
     init(){
-        
         self._viewModel = StateObject(wrappedValue: MyViewModel(userName: "username"))
     }
     
     var body: some View {
         VStack {
-            
-            if(true){
-                Text("logined in")
+            if(viewModel.isLoading){
+                Text("loading")
             }else{
-                Text("Login")
+                Text("not loading")
+            }
+            
+            if(viewModel.post != nil){
+                Text(viewModel.post?.data.token ?? "")
+            }else{
+                Text("Click to Login")
             }
             
             NavigationLink(destination: DetailView(), isActive: $isView1Active) {
@@ -32,6 +36,7 @@ struct MyView: View {
             }
             
             Button {
+                viewModel.isLoading = true
                 viewModel.login()
             } label: {
                 VStack {
@@ -40,11 +45,8 @@ struct MyView: View {
             }
             .frame(maxWidth: .infinity)
     
-        
-        
-            
             Button {
-                viewModel.testNetwork()
+               // viewModel.testNetwork()
             } label: {
                 VStack {
                     Text(viewModel.token + "testnetwork")
