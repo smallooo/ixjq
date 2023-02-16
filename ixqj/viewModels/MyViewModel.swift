@@ -44,7 +44,12 @@ public class MyViewModel: ObservableObject {
     }
         
     public func login() {
-        apiPublisher = XQJApiService.fetch(endpoint: .login)
+        let queryItemToken = URLQueryItem(name: "username", value: "小天使")
+        let queryItemQuery = URLQueryItem(name: "password", value: "666666")
+        
+        var queryList: [URLQueryItem] = [queryItemToken, queryItemQuery]
+        
+        apiPublisher = XQJApiService.fetch(endpoint: .login, queryList: queryList)
             .subscribe(on: DispatchQueue.global())
             .replaceError(with: Post(code: 404, data: Data(token: "no token"), msg: "error message"))
             .eraseToAnyPublisher()

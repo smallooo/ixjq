@@ -38,6 +38,7 @@ struct MyView: View {
             Button {
                 viewModel.isLoading = true
                 viewModel.login()
+                AppUserDefaults.shared.dodoCode = "dodoCode 654321"
             } label: {
                 VStack {
                     Text(viewModel.token + "login")

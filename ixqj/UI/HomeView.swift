@@ -10,27 +10,23 @@ import SwiftUI
 import backend
 
 struct HomeView: View {
+    @State var dodoCode = AppUserDefaults.shared.dodoCode
     var body: some View {
         VStack {
-            Text("Hello HomeView")
-            
+            Text(AppUserDefaults.shared.dodoCode)
             ItemImage(path: "", size: 100)
-            
-            
             NavigationLink {
                 GreetingView()
             } label: {
                 Image(systemName: "list.dash")
                     .foregroundColor(.gray)
             }
-            
         }
     }
 }
 
 func greeting() {
         print("Hello, World!")
-    
     }
 
 struct HomeView_Previews: PreviewProvider {
