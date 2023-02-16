@@ -44,10 +44,11 @@ public class MyViewModel: ObservableObject {
     }
         
     public func login() {
-        let queryItemToken = URLQueryItem(name: "username", value: "小天使")
+        let queryItemName = URLQueryItem(name: "username", value: "小天使")
         let queryItemQuery = URLQueryItem(name: "password", value: "666666")
+       // let queryItemToken = URLQueryItem(name: "token", value: UserDefaults.standard.string(forKey: "token") ?? "")
+        var queryList: [URLQueryItem] = [queryItemName,queryItemQuery]
         
-        var queryList: [URLQueryItem] = [queryItemToken, queryItemQuery]
         
         apiPublisher = XQJApiService.fetch(endpoint: .login, queryList: queryList)
             .subscribe(on: DispatchQueue.global())
@@ -60,13 +61,11 @@ public class MyViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] in
                 guard let self = self else { return }
-               // NSLog($0.data.token ?? "")
                 NSLog(String($0.code))
                 NSLog($0.msg ?? "")
-                
                 self.post = $0
-               // NSLog(self.post?.data ?? "")
                 self.isLoading = false
+                UserDefaults.standard.set(self.post!.data.token , forKey: "token")
             })
     }
 }

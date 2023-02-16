@@ -11,6 +11,8 @@ import backend
 
 struct HomeView: View {
     @State var dodoCode = AppUserDefaults.shared.dodoCode
+    
+    
     var body: some View {
         VStack {
             Text(AppUserDefaults.shared.dodoCode)
@@ -21,6 +23,8 @@ struct HomeView: View {
                 Image(systemName: "list.dash")
                     .foregroundColor(.gray)
             }
+            
+            Text(UserDefaults.standard.string(forKey: "token") ?? "")
         }
     }
 }

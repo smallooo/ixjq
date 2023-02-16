@@ -18,6 +18,7 @@
 		D162A746299B278700F0CC92 /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = D162A745299B278700F0CC92 /* UI */; };
 		D162A749299B2AFF00F0CC92 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162A748299B2AFF00F0CC92 /* MyViewModel.swift */; };
 		D162A74E299E1C4100F0CC92 /* AppUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162A74D299E1C4100F0CC92 /* AppUserDefault.swift */; };
+		D162A750299E22F000F0CC92 /* CurrentDateEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D162A74F299E22F000F0CC92 /* CurrentDateEnvironment.swift */; };
 		D17066F62996303C0027CEE5 /* ixqjApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17066F52996303C0027CEE5 /* ixqjApp.swift */; };
 		D17066F82996303C0027CEE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17066F72996303C0027CEE5 /* ContentView.swift */; };
 		D17066FA2996303E0027CEE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17066F92996303E0027CEE5 /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		D162A744299B26D200F0CC92 /* UI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UI; path = ../package/UI; sourceTree = "<group>"; };
 		D162A748299B2AFF00F0CC92 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 		D162A74D299E1C4100F0CC92 /* AppUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefault.swift; sourceTree = "<group>"; };
+		D162A74F299E22F000F0CC92 /* CurrentDateEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDateEnvironment.swift; sourceTree = "<group>"; };
 		D17066F22996303C0027CEE5 /* ixqj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ixqj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17066F52996303C0027CEE5 /* ixqjApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ixqjApp.swift; sourceTree = "<group>"; };
 		D17066F72996303C0027CEE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D162A739299A3EBE00F0CC92 /* UIState.swift */,
+				D162A74F299E22F000F0CC92 /* CurrentDateEnvironment.swift */,
 			);
 			path = env;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				D162A74E299E1C4100F0CC92 /* AppUserDefault.swift in Sources */,
 				D1706728299636780027CEE5 /* HomeView.swift in Sources */,
 				D17066F82996303C0027CEE5 /* ContentView.swift in Sources */,
+				D162A750299E22F000F0CC92 /* CurrentDateEnvironment.swift in Sources */,
 				D162A737299A3D9C00F0CC92 /* TabbarView.swift in Sources */,
 				D17066F62996303C0027CEE5 /* ixqjApp.swift in Sources */,
 			);

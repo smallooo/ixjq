@@ -12,6 +12,9 @@ struct MyView: View {
     @State var isView1Active: Bool = false
     @State var isLogin: Bool = false
     
+    @State var saveDateString: String = ""
+    @State var readDateString: String = "1"
+    
     init(){
         self._viewModel = StateObject(wrappedValue: MyViewModel(userName: "username"))
     }
@@ -48,9 +51,14 @@ struct MyView: View {
     
             Button {
                // viewModel.testNetwork()
+                let date = Date()
+                saveDateString =  DateFormatter().string(from: date) + "iiie"
+                UserDefaults.standard.set(saveDateString , forKey: "jjj")
+                readDateString = UserDefaults.standard.string(forKey: "jjj") ?? ""
             } label: {
                 VStack {
-                    Text(viewModel.token + "testnetwork")
+                    Text(readDateString)
+                    Text(viewModel.token + "UserDefaults")
                 }
             }
             .frame(maxWidth: .infinity)
